@@ -9,16 +9,21 @@ public class Greeting {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false)
     private long id;
-    private String message;
+    private String firstName;
+    private String lastName;
 
-    public Greeting(long id, String message){
+    public Greeting(long id, String firstName, String lastName){
         this.id = id;
-        this.message = message;
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Greeting() {
 
     }
+
+//    public Greeting(long incrementAndGet, String format) {
+//    }
 
     public long getId() {
         return id;
@@ -28,16 +33,21 @@ public class Greeting {
         this.id = id;
     }
 
-    public String getMessage() {
-        return message;
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
-
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
     @Override
     public String toString() {
-        return message ;
+        return firstName+" "+lastName;
     }
 }

@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicLong;
 //@GetMapping("/greeting")
 @RequestMapping("/greeting")
 public class GreetingController {
-    private static final String template = "Hello, %s";
+    private static final String template = "Hello, %s " ;
     private final AtomicLong counter = new AtomicLong();
 
     @Autowired
@@ -43,10 +43,19 @@ public class GreetingController {
 //    }
     @Autowired
     GreetingService greetingService;
-    @PostMapping("/post")
-    public Greeting createSecGreeting(@RequestBody Greeting msg){
-//        return greetingService.addGreeting(msg);
+//    @PostMapping("/post")
+//    public Greeting createSecGreeting(@RequestBody Greeting msg){
+//        return new Greeting(counter.incrementAndGet(),
+//                   String.format(template, msg));
+//    }
+    //    //http://localhost:8080/greeting/post
+    //    //http://localhost:8080/greeting/param/Akash
+
+    @GetMapping("/post")
+//    public Greeting sayHelloUc3(@RequestParam(value = "firstname") String firstName, @RequestBody String lastName){
+    public Greeting sayHelloUc3(@RequestBody Greeting name){
+
         return new Greeting(counter.incrementAndGet(),
-                   String.format(template, msg));
+                            name.getFirstName(),name.getLastName());
     }
 }
