@@ -11,12 +11,21 @@ public class Greeting {
     private long id;
     private String firstName;
     private String lastName;
-
-    public Greeting(long id, String firstName, String lastName){
+    private String message;
+    public Greeting(long id, String firstName, String lastName, String message){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.message = message;
     }
+    public Greeting(String firstName, String lastName, String message){
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.message = message;
+    }
+
+
 
     public Greeting() {
 
@@ -28,7 +37,12 @@ public class Greeting {
     public long getId() {
         return id;
     }
-
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
     public void setId(long id) {
         this.id = id;
     }
