@@ -12,11 +12,14 @@ import java.util.concurrent.atomic.AtomicLong;
 //@GetMapping("/greeting")
 @RequestMapping("/greeting")
 public class GreetingController {
-    private static final String template = "Hello, %s " ;
+    private static final String template = "Hello, %s %s" ;
     private final AtomicLong counter = new AtomicLong();
 
     @Autowired
     IGreetings greets;
+
+    @Autowired
+    GreetingService greetingService;
     //uc1 --> http://localhost:8080/greeting?name=Akash
 //    @GetMapping(value = {"","/","/hello"})
 //    public Greeting greeting(@RequestParam(value="name", defaultValue="world") String name){
@@ -37,12 +40,7 @@ public class GreetingController {
 //        return new Greeting(counter.incrementAndGet(),
 //                   String.format(template, name));
 //    }
-//    @PostMapping("/post")
-//    public Greeting createGreeting(@RequestBody Greeting msg){
-//        return greets.addGreeting(msg);
-//    }
-    @Autowired
-    GreetingService greetingService;
+
 //    @PostMapping("/post")
 //    public Greeting createSecGreeting(@RequestBody Greeting msg){
 //        return new Greeting(counter.incrementAndGet(),
@@ -51,11 +49,16 @@ public class GreetingController {
     //    //http://localhost:8080/greeting/post
     //    //http://localhost:8080/greeting/param/Akash
 
-    @GetMapping("/post")
-//    public Greeting sayHelloUc3(@RequestParam(value = "firstname") String firstName, @RequestBody String lastName){
-    public Greeting sayHelloUc3(@RequestBody Greeting name){
-
-        return new Greeting(counter.incrementAndGet(),
-                            name.getFirstName(),name.getLastName());
+//    @GetMapping("/post")
+//    public Greeting sayHelloUc3(@RequestBody Greeting name){
+//
+//        return new Greeting(counter.incrementAndGet(),
+//                            name.getFirstName(),name.getLastName(),
+//                            String.format(template, name.getFirstName(), name.getLastName()));
+//    }
+    @PostMapping("/add")
+    public Greeting addGreeting(@RequestBody Greeting msg){
+        return greets.addGreeting(msg);
     }
+
 }
