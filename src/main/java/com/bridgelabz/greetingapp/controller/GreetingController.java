@@ -67,5 +67,8 @@ public class GreetingController {
     public Optional<Greeting> findGreeting(@PathVariable int id){
         return greets.findGreetingID(id);
     }
-
+    @DeleteMapping("/{id}")
+    public void deleteGreets(@PathVariable int id){
+        greets.deleteGreetingID(id);
+    }
 }

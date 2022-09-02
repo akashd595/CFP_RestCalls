@@ -10,5 +10,5 @@ public interface IGreetings {
     public Greeting addGreeting(Greeting greets);
 
     public Optional<Greeting> findGreetingID(int id);
-    public void deleteGreetingID(Integer id);
+    public void deleteGreetingID(int id);
 }
