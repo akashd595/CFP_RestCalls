@@ -3,6 +3,7 @@ package com.bridgelabz.greetingapp.service;
 import com.bridgelabz.greetingapp.model.Greeting;
 
 
+import java.util.List;
 import java.util.Optional;
 
 public interface IGreetings {
@@ -11,4 +12,6 @@ public interface IGreetings {
 
     public Optional<Greeting> findGreetingID(int id);
     public void deleteGreetingID(int id);
+
+    public List<Greeting> findAllGreets();
 }
