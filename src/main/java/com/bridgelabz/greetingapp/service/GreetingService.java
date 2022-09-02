@@ -5,6 +5,7 @@ import com.bridgelabz.greetingapp.repository.GreetingRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,5 +20,9 @@ public class GreetingService implements IGreetings{
     }
     public void deleteGreetingID(int id){
         greetingRepo.deleteById(id);
+    }
+
+    public List<Greeting> findAllGreets(){
+        return greetingRepo.findAll();
     }
 }
