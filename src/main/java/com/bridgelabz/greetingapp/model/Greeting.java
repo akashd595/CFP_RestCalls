@@ -28,7 +28,7 @@ public class Greeting {
 
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
     public String getMessage() {

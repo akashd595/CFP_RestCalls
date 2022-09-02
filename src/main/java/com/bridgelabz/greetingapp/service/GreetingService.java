@@ -17,7 +17,7 @@ public class GreetingService implements IGreetings{
     public Optional<Greeting> findGreetingID(int id){
         return greetingRepo.findById(id);
     }
-    public void deleteGreetingID(Integer id){
+    public void deleteGreetingID(int id){
         greetingRepo.deleteById(id);
     }
 }
