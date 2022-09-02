@@ -6,6 +6,7 @@ import com.bridgelabz.greetingapp.service.IGreetings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -22,9 +23,10 @@ public class GreetingController {
     GreetingService greetingService;
     //uc1 --> http://localhost:8080/greeting?name=Akash
 //    @GetMapping(value = {"","/","/hello"})
-//    public Greeting greeting(@RequestParam(value="name", defaultValue="world") String name){
+//    public Greeting greeting(@RequestParam(value="name") Greeting name){
 //        return new Greeting(counter.incrementAndGet(),
-//                   String.format(template, name));
+//                   name.getFirstName(), name.getLastName(),
+//                   String.format(template, name.getFirstName(),name.getLastName()));
 //    }
 //
 //    //http://localhost:8080/greeting/param/Akash
@@ -41,11 +43,12 @@ public class GreetingController {
 //                   String.format(template, name));
 //    }
 
-//    @PostMapping("/post")
-//    public Greeting createSecGreeting(@RequestBody Greeting msg){
-//        return new Greeting(counter.incrementAndGet(),
-//                   String.format(template, msg));
-//    }
+    @PostMapping("/post")
+    public Greeting createSecGreeting(@RequestBody Greeting msg){
+        return new Greeting((int) counter.incrementAndGet(),
+                   msg.getFirstName(), msg.getLastName(),
+                   String.format(template, msg.getFirstName(), msg.getLastName()));
+    }
     //    //http://localhost:8080/greeting/post
     //    //http://localhost:8080/greeting/param/Akash
 
@@ -59,6 +62,10 @@ public class GreetingController {
     @PostMapping("/add")
     public Greeting addGreeting(@RequestBody Greeting msg){
         return greets.addGreeting(msg);
+    }
+    @GetMapping("/find/{id}")
+    public Optional<Greeting> findGreeting(@PathVariable int id){
+        return greets.findGreetingID(id);
     }
 
 }

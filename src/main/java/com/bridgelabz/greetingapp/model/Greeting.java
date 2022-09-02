@@ -8,11 +8,11 @@ public class Greeting {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false)
-    private long id;
+    private int id;
     private String firstName;
     private String lastName;
     private String message;
-    public Greeting(long id, String firstName, String lastName, String message){
+    public Greeting(int id, String firstName, String lastName, String message){
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -24,15 +24,9 @@ public class Greeting {
         this.lastName = lastName;
         this.message = message;
     }
-
-
-
     public Greeting() {
 
     }
-
-//    public Greeting(long incrementAndGet, String format) {
-//    }
 
     public long getId() {
         return id;
@@ -43,7 +37,7 @@ public class Greeting {
     public void setMessage(String message) {
         this.message = message;
     }
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
