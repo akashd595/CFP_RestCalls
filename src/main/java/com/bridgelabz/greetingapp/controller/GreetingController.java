@@ -1,11 +1,11 @@
 package com.bridgelabz.greetingapp.controller;
 
+import com.bridgelabz.greetingapp.DTO.GreetingDTO;
 import com.bridgelabz.greetingapp.model.Greeting;
 import com.bridgelabz.greetingapp.service.GreetingService;
 import com.bridgelabz.greetingapp.service.IGreetings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
@@ -60,10 +60,14 @@ public class GreetingController {
 //                            name.getFirstName(),name.getLastName(),
 //                            String.format(template, name.getFirstName(), name.getLastName()));
 //    }
-    @PostMapping("/add")
-    public Greeting addGreeting(@RequestBody Greeting msg){
-        return greets.addGreeting(msg);
-    }
+//    @PostMapping("/add")
+//    public Greeting addGreeting(@RequestBody Greeting msg){
+//        return greets.addGreeting(msg);
+//    }
+@PostMapping("/add")
+public Greeting addGreeting(@RequestBody GreetingDTO msg ){
+    return greets.addGreeting(msg);
+}
     @GetMapping("/find/{id}")
     public Optional<Greeting> findGreeting(@PathVariable int id){
         return greets.findGreetingID(id);

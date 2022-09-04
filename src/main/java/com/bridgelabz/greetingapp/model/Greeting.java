@@ -1,5 +1,7 @@
 package com.bridgelabz.greetingapp.model;
 
+import com.bridgelabz.greetingapp.DTO.GreetingDTO;
+
 import javax.persistence.*;
 
 @Entity
@@ -18,16 +20,21 @@ public class Greeting {
         this.lastName = lastName;
         this.message = message;
     }
-    public Greeting(String firstName, String lastName, String message){
+    public Greeting(String firstName, String lastName){
 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.message = message;
+        this.message = "Hello "+firstName+" "+lastName;
     }
     public Greeting() {
 
     }
 
+    public Greeting(GreetingDTO greetingDto){
+        this.firstName = greetingDto.getFirstName();
+        this.lastName = greetingDto.getLastName();
+        this.message=greetingDto.getMessage();
+    }
     public int getId() {
         return id;
     }
@@ -40,22 +47,22 @@ public class Greeting {
     public void setId(int id) {
         this.id = id;
     }
-
     public String getFirstName() {
         return firstName;
     }
     public String getLastName() {
         return lastName;
     }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
     @Override
     public String toString() {
         return firstName+" "+lastName;
     }
+
 }
